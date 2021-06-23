@@ -12,6 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.3.1",
+    "lodash.get": "^4.4.2",
+    "moment": "^2.29.1",
     "next": "^11.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -22,6 +25,7 @@
     "eslint-config-idiomatic": "^4.0.0",
     "eslint-config-next": "^11.0.0",
     "postcss": "^8.3.5",
+    "prop-types": "^15.7.2",
     "tailwindcss": "^2.2.2"
   }
 }
