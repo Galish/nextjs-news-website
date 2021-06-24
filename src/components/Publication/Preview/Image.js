@@ -2,21 +2,18 @@ import Image from 'next/image'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-const PublicationDateTime = ({ alt, children, className, height, src, width }) => {
+const PublicationDateTime = ({ alt, children, className, height, isVertical, src, width }) => {
 	if (!src) {
 		return null
 	}
 
 	return (
 		<div className={cx(
-			'lg:mr-8',
-			'lg:w-80',
-			'mr-3',
 			'relative',
-			'sm:mr-4',
-			'sm:w-56',
-			'w-28',
-			className
+			className,
+			{
+				'w-28 lg:w-80 sm:w-56 mr-3 lg:mr-8 sm:mr-4': !isVertical
+			}
 		)}>
 			<Image
 				src={src}
@@ -37,12 +34,14 @@ PublicationDateTime.propTypes = {
 	alt: PropTypes.string,
 	className: PropTypes.string,
 	height: PropTypes.number,
+	isVertical: PropTypes.bool,
 	src: PropTypes.string,
 	width: PropTypes.number
 }
 
 PublicationDateTime.defaultProps = {
 	height: 200,
+	isVertical: false,
 	width: 300
 }
 

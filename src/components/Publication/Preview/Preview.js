@@ -8,14 +8,21 @@ import Image from './Image'
 import Text from './Text'
 
 const PublicationPreview = ({
-	author, category, description, image, published_at, source, title
+	author, category, description, hideCategory, hideDescription, hideImage,
+	hideMetadata, image, isVertical, published_at, source, title
 }) => {
 
 	return (
-		<div className="flex my-4">
-			{image && (
+		<div className={cx(
+			'my-4',
+			{
+				'flex': !isVertical
+			}
+		)}>
+			{!hideImage && (
 				<Image
 					alt={title}
+					isVertical={isVertical}
 					src={image}
 				>
 					<Category className={cx(
@@ -31,35 +38,40 @@ const PublicationPreview = ({
 				</Image>
 			)}
 
-			<div className="flex-1">
+			<div className={cx({
+				'flex-1': !isVertical,
+				'mt-2': isVertical
+			})}>
 				<div className="text-md sm:text-lg lg:text-2xl font-medium mb-2">
 					{title}
 				</div>
 
-				{!image && (
+				{(hideImage || !image) && (
 					<Category isInline>
-						{category}
+						{!hideCategory && category}
 					</Category>
 				)}
 
-				<div className="flex text-gray-400 text-sm mb-1">
-					<Author>
-						{author || source}
-					</Author>
+				{!hideMetadata && (
+					<div className="flex text-gray-400 text-sm mb-1 flex-wrap">
+						<Author>
+							{author || source}
+						</Author>
 
-					{!!(author || source) && published_at && (
-						<div className="mx-1">
-							&mdash;
-						</div>
-					)}
+						{!!(author || source) && published_at && (
+							<div className="mx-1">
+								&mdash;
+							</div>
+						)}
 
-					<DateTime>
-						{published_at}
-					</DateTime>
-				</div>
+						<DateTime>
+							{published_at}
+						</DateTime>
+					</div>
+				)}
 
 				<Text>
-					{description}
+					{!hideDescription && description}
 				</Text>
 			</div>
 		</div>
@@ -71,12 +83,25 @@ PublicationPreview.propTypes = {
 	category: PropTypes.string,
 	country: PropTypes.string,
 	description: PropTypes.string,
+	hideCategory: PropTypes.bool,
+	hideDescription: PropTypes.bool,
+	hideImage: PropTypes.bool,
+	hideMetadata: PropTypes.bool,
 	image: PropTypes.string,
+	isVertical: PropTypes.bool,
 	language: PropTypes.string,
 	published_at: PropTypes.string,
 	source: PropTypes.string,
 	title: PropTypes.string,
 	url: PropTypes.string
+}
+
+PublicationPreview.defaultProps = {
+	hideCategory: false,
+	hideDescription: false,
+	hideImage: false,
+	hideMetadata: false,
+	isVertical: false
 }
 
 export default PublicationPreview
