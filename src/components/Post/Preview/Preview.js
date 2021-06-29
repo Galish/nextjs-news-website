@@ -6,12 +6,12 @@ import Category from './Category'
 import DateTime from './DateTime'
 import Image from './Image'
 import Text from './Text'
+import Title from './Title'
 
-const PublicationPreview = ({
+const PostPreview = ({
 	author, category, description, hideCategory, hideDescription, hideImage,
-	hideMetadata, image, isVertical, published_at, source, title
+	hideMetadata, image, isVertical, linkTo, published_at, source, title
 }) => {
-
 	return (
 		<div className={cx(
 			'my-4',
@@ -23,6 +23,7 @@ const PublicationPreview = ({
 				<Image
 					alt={title}
 					isVertical={isVertical}
+					linkTo={linkTo}
 					src={image}
 				>
 					<Category className={cx(
@@ -42,9 +43,9 @@ const PublicationPreview = ({
 				'flex-1': !isVertical,
 				'mt-2': isVertical
 			})}>
-				<div className="text-md sm:text-lg lg:text-2xl font-medium mb-2">
+				<Title linkTo={linkTo}>
 					{title}
-				</div>
+				</Title>
 
 				{(hideImage || !image) && (
 					<Category isInline>
@@ -78,7 +79,7 @@ const PublicationPreview = ({
 	)
 }
 
-PublicationPreview.propTypes = {
+PostPreview.propTypes = {
 	author: PropTypes.string,
 	category: PropTypes.string,
 	country: PropTypes.string,
@@ -90,13 +91,14 @@ PublicationPreview.propTypes = {
 	image: PropTypes.string,
 	isVertical: PropTypes.bool,
 	language: PropTypes.string,
+	linkTo: PropTypes.string,
 	published_at: PropTypes.string,
 	source: PropTypes.string,
 	title: PropTypes.string,
 	url: PropTypes.string
 }
 
-PublicationPreview.defaultProps = {
+PostPreview.defaultProps = {
 	hideCategory: false,
 	hideDescription: false,
 	hideImage: false,
@@ -104,4 +106,4 @@ PublicationPreview.defaultProps = {
 	isVertical: false
 }
 
-export default PublicationPreview
+export default PostPreview

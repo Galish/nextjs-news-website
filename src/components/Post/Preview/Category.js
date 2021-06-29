@@ -4,7 +4,7 @@ import get from 'lodash.get'
 
 import { CATEGORY_COLORS } from 'constants/colors'
 
-const PublicationCategory = ({ children, className, defaultColor }) => {
+const PostCategory = ({ children, className, defaultColor }) => {
 	if (!children) {
 		return null
 	}
@@ -31,13 +31,13 @@ const PublicationCategory = ({ children, className, defaultColor }) => {
 	)
 }
 
-PublicationCategory.propTypes = {
+PostCategory.propTypes = {
 	className: PropTypes.string,
 	defaultColor: PropTypes.string
 }
 
-PublicationCategory.defaultProps = {
+PostCategory.defaultProps = {
 	defaultColor: 'blue-500'
 }
 
-export default PublicationCategory
+export default PostCategory

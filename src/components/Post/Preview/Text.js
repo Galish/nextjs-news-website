@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-const PublicationText = ({ children, className, length }) => {
+const PostText = ({ children, className, length }) => {
 	if (!children) {
 		return null
 	}
@@ -30,13 +30,13 @@ const PublicationText = ({ children, className, length }) => {
 	)
 }
 
-PublicationText.propTypes = {
+PostText.propTypes = {
 	className: PropTypes.string,
 	length: PropTypes.number
 }
 
-PublicationText.defaultProps = {
+PostText.defaultProps = {
 	length: 150
 }
 
-export default PublicationText
+export default PostText

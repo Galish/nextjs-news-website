@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-const PublicationAuthor = ({ children, className }) => {
+const PostAuthor = ({ children, className }) => {
 	if (!children) {
 		return null
 	}
@@ -18,8 +18,8 @@ const PublicationAuthor = ({ children, className }) => {
 	)
 }
 
-PublicationAuthor.propTypes = {
+PostAuthor.propTypes = {
 	className: PropTypes.string
 }
 
-export default PublicationAuthor
+export default PostAuthor

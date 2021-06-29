@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
-const PublicationDateTime = ({ children, className, format }) => {
+const PostDateTime = ({ children, className, format }) => {
 	if (!children) {
 		return null
 	}
@@ -13,13 +13,13 @@ const PublicationDateTime = ({ children, className, format }) => {
 	)
 }
 
-PublicationDateTime.propTypes = {
+PostDateTime.propTypes = {
 	className: PropTypes.string,
 	format: PropTypes.string
 }
 
-PublicationDateTime.defaultProps = {
+PostDateTime.defaultProps = {
 	format: 'LL'
 }
 
-export default PublicationDateTime
+export default PostDateTime

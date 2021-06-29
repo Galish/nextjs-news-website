@@ -1,6 +1,6 @@
 import Caption from 'components/Layout/Caption'
 import HomePageLayout from 'components/Layout/HomePage'
-import PublicationPreview from 'components/Publication/Preview'
+import PostPreview from 'components/Post/Preview'
 import WidgetTitle from 'components/Layout/WidgetTitle'
 
 function HomePage({ data }) {
@@ -13,8 +13,9 @@ function HomePage({ data }) {
 					</Caption>
 
 					{data.slice(0, 25).map(publication => (
-						<PublicationPreview
-							key={publication.title + publication.published_at}
+						<PostPreview
+							key={publication.id}
+							linkTo={`/post/${publication.id}`}
 							{...publication}
 						/>
 					))}
@@ -25,8 +26,8 @@ function HomePage({ data }) {
 					</WidgetTitle>
 
 					{data.slice(0, 5).map(publication => (
-						<PublicationPreview
-							key={publication.title + publication.published_at}
+						<PostPreview
+							key={publication.id}
 							// hideCategory
 							hideDescription
 							// hideImage
