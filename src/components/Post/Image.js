@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 
 const PostImage = ({
-	alt, children, className, height, isVertical, linkTo, src, width
+	alt, children, className, height, isResponsive, linkTo, src, width
 }) => {
 	if (!src) {
 		return null
@@ -27,7 +27,7 @@ const PostImage = ({
 			'relative',
 			className,
 			{
-				'w-28 lg:w-80 sm:w-56 mr-3 lg:mr-8 sm:mr-4': !isVertical
+				'w-28 lg:w-80 sm:w-56 mr-3 lg:mr-8 sm:mr-4': !isResponsive
 			}
 		)}>
 			{linkTo
@@ -50,7 +50,7 @@ PostImage.propTypes = {
 	alt: PropTypes.string,
 	className: PropTypes.string,
 	height: PropTypes.number,
-	isVertical: PropTypes.bool,
+	isResponsive: PropTypes.bool,
 	linkTo: PropTypes.string,
 	src: PropTypes.string,
 	width: PropTypes.number
@@ -58,7 +58,7 @@ PostImage.propTypes = {
 
 PostImage.defaultProps = {
 	height: 200,
-	isVertical: false,
+	isResponsive: false,
 	width: 300
 }
 

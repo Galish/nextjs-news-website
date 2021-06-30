@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-const PostText = ({ children, className, length }) => {
+const PostText = ({ children, className, length, size }) => {
 	if (!children) {
 		return null
 	}
@@ -20,23 +20,26 @@ const PostText = ({ children, className, length }) => {
 
 	return (
 		<div className={cx(
-			'hidden',
-			'sm:block',
 			'text-gray-500',
+			{
+				'hidden sm:block ': size === 'medium',
+				'text-lg lg:text-xl xl:text-2xl': size === 'large'
+			},
 			className
 		)}>
-			{truncate(children)}
+			{length && truncate(children) || children}
 		</div>
 	)
 }
 
 PostText.propTypes = {
 	className: PropTypes.string,
-	length: PropTypes.number
+	length: PropTypes.number,
+	size: PropTypes.oneOf([ 'small', 'medium', 'large' ])
 }
 
 PostText.defaultProps = {
-	length: 150
+	size: 'medium'
 }
 
 export default PostText

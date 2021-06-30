@@ -1,13 +1,13 @@
 import Caption from 'components/Layout/Caption'
-import HomePageLayout from 'components/Layout/HomePage'
-import PostPreview from 'components/Post/Preview'
+import PostPreview from 'components/Post/PostPreview'
+import TwoColumnLayout from 'components/Layout/TwoColumn'
 import WidgetTitle from 'components/Layout/WidgetTitle'
 
 function HomePage({ data }) {
 	return (
-		<HomePageLayout>
-			<div className="flex">
-				<div className="flex-1 pr-5">
+		<TwoColumnLayout
+			leftColumn={
+				<>
 					<Caption color="red-500">
 						Top stories
 					</Caption>
@@ -19,8 +19,10 @@ function HomePage({ data }) {
 							{...publication}
 						/>
 					))}
-				</div>
-				<div className="w-1/4 border-l border-gray-200 pl-5">
+				</>
+			}
+			rightColumn={
+				<>
 					<WidgetTitle>
 						Our pick
 					</WidgetTitle>
@@ -36,9 +38,9 @@ function HomePage({ data }) {
 							{...publication}
 						/>
 					))}
-				</div>
-			</div>
-		</HomePageLayout>
+				</>
+			}
+		/>
 	)
 }
 

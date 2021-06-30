@@ -1,11 +1,34 @@
-import HomePageLayout from 'components/Layout/HomePage'
-import PostPreview from 'components/Post/Preview'
+import Container from 'components/Layout/Container'
+import TwoColumnLayout from 'components/Layout/TwoColumn'
+import PostPreview from 'components/Post/PostPreview'
+import Post from 'components/Post/Post'
 
 function PostPage(post) {
 	return (
-		<HomePageLayout>
-			<PostPreview {...post} />
-		</HomePageLayout>
+		<>
+			<Container>
+				<Post
+					{...post}
+					hideText
+					hideMetadata
+				/>
+			</Container>
+
+			<TwoColumnLayout
+				leftColumn={
+					<Post
+						{...post}
+						hideImage
+						hideTitle
+					/>
+				}
+				rightColumn={
+					<div>
+						Some text here
+					</div>
+				}
+			/>
+		</>
 	)
 }
 

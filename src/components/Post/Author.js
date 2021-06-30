@@ -8,7 +8,7 @@ const PostAuthor = ({ children, className }) => {
 
 	return (
 		<div className={cx(
-			'mb-2',
+			// 'mb-2',
 			'text-gray-400',
 			'text-sm',
 			className

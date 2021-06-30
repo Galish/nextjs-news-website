@@ -4,7 +4,7 @@ import get from 'lodash.get'
 
 import { CATEGORY_COLORS } from 'constants/colors'
 
-const PostCategory = ({ children, className, defaultColor }) => {
+const PostCategory = ({ children, className, defaultColor, isInline }) => {
 	if (!children) {
 		return null
 	}
@@ -18,12 +18,14 @@ const PostCategory = ({ children, className, defaultColor }) => {
 	return (
 		<div className={cx(
 			'inline-block',
-			'mb-5',
 			'px-2',
 			'py-1',
 			'text-white',
 			'text-xs uppercase',
 			[ `bg-${getColor(children)}` ],
+			{
+				'mb-5': isInline
+			},
 			className
 		)}>
 			{children}
@@ -33,11 +35,13 @@ const PostCategory = ({ children, className, defaultColor }) => {
 
 PostCategory.propTypes = {
 	className: PropTypes.string,
-	defaultColor: PropTypes.string
+	defaultColor: PropTypes.string,
+	isInline: PropTypes.bool
 }
 
 PostCategory.defaultProps = {
-	defaultColor: 'blue-500'
+	defaultColor: 'blue-500',
+	isInline: false
 }
 
 export default PostCategory
